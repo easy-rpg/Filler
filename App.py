@@ -137,44 +137,35 @@ class Application(Frame):
         self.entry_von.delete(0, END)
 
     def att(self): 
+        self.clr()
         global personagem
-        if personagem:       
-            self.rnome.set("Nome: "+personagem.nome)
+        if personagem:   
+            # print personagem.nome
+            self.entry_nome.insert(0, personagem.nome)  
 
-            string = "Força: " + str(personagem.atributos['for'])
-            string += " | "
-            string += "Destreza: " + str(personagem.atributos['dex'])
-            string += " | "
-            string += "Constituição: " + str(personagem.atributos['con'])
-            string += " | "
-            string += "Inteligência: " + str(personagem.atributos['int'])
-            string += " | "
-            string += "Sabedoria: " + str(personagem.atributos['sab'])
-            string += " | "
-            string += "Carisma: " + str(personagem.atributos['car'])
-            string += " | "
-            self.rattr.set(string)
+            self.entry_for.insert(0, str(personagem.atributos['for']))
+            self.entry_dex.insert(0, str(personagem.atributos['dex'])) 
+            self.entry_con.insert(0, str(personagem.atributos['con'])) 
+            self.entry_int.insert(0, str(personagem.atributos['int'])) 
+            self.entry_sab.insert(0, str(personagem.atributos['sab'])) 
+            self.entry_car.insert(0, str(personagem.atributos['car'])) 
 
-            self.rlvl.set("lvl: "+str(personagem.nivel))
+            self.entry_lvl.insert(0, str(personagem.nivel))
 
-            string = "Classes: "
+            string = ""
             for index in personagem.classes:
                 string += index + " ("+str(personagem.classes[index].nivel)+") "
-            self.rcls.set(string)
+            self.entry_classes.insert(0, string)
 
-            self.rbba.set("BBA: "+str(personagem.bba))
+            self.entry_bba.insert(0, str(personagem.bba))
 
-            string = "FOR: " + str(personagem.fortitude)
-            string += " | "
-            string += "REF: " + str(personagem.reflexos)
-            string += " | "
-            string += "VON: " + str(personagem.vontade)
-            self.rres.set(string)
+            self.entry_fort.insert(0, str(personagem.fortitude))
+            self.entry_ref.insert(0, str(personagem.reflexos))
+            self.entry_von.insert(0, str(personagem.vontade))
 
     def createWidgets(self):
         # self.nome = Text(self, state="disabled", height="1", width=30)
         # self.nome.insert(END, str(personagem.nome))
-        self.rnome = StringVar()
         self.nome = Label(self, textvariable=self.rnome, bg="white")
         self.nome.pack()
 
