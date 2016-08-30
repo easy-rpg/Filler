@@ -21,14 +21,6 @@ class Class(object):
 		self.fortitude = type(self).fortitude[(self.nivel-1)]
 		self.reflexos = type(self).reflexos[(self.nivel-1)]
 		self.vontade = type(self).vontade[(self.nivel-1)]
-
-	def lvl_up(self):
-		self.nivel += 1
-		self.bba = type(self).bba[(self.nivel-1)]
-		
-		self.fortitude = type(self).fortitude[(self.nivel-1)]
-		self.reflexos = type(self).reflexos[(self.nivel-1)]
-		self.vontade = type(self).vontade[(self.nivel-1)]
 	
 	def __str__(self):
 		string = "nv: " + str(self.nivel) + " bba: " + str(self.bba)
