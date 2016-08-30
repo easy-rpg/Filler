@@ -75,17 +75,6 @@ class MenuBar(Menu):
         # self.button["command"] = self.cadastrar
         # self.button.grid(row=8, columnspan=2)
 
-    def cadastrar(self):
-        if not self.enome.get() or not self.eattfor.get() or not self.eattdex.get() or not self.eattcon.get() or not self.eattint.get() or not self.eattsab.get() or not self.eattcar.get():
-            self.mensagem("Erro", "preencha todos os campos!")
-            return
-        forca, destreza, constituicao, inteligencia, sabedoria, carisma = int(self.eattfor.get()), int(self.eattdex.get()), int(self.eattcon.get()), int(self.eattint.get()), int(self.eattsab.get()), int(self.eattcar.get())
-        global personagem
-        personagem = Personagem(self.enome.get(), forca, destreza, constituicao, inteligencia, sabedoria, carisma)
-        print personagem
-        self.t.withdraw()
-        # self.mensagem("Aviso", "Personagem criado com sucesso")
-
     def LoadChar(self):
         char = askopenfilename()
         global personagem
@@ -110,6 +99,9 @@ class MenuBar(Menu):
 
 class Application(Frame):
 
+    def event_salvar_char(self, event):
+        self.salvar_char()
+
     def salvar_char(self):
         print "salvar char"
         if not self.entry_nome.get() or not self.entry_for.get() or not self.entry_dex.get() or not self.entry_con.get() or not self.entry_int.get() or not self.entry_sab.get() or not self.entry_car.get():
@@ -118,10 +110,14 @@ class Application(Frame):
         if  not self.entry_for.get().isdigit() or not self.entry_dex.get().isdigit() or not self.entry_con.get().isdigit() or not self.entry_int.get().isdigit() or not self.entry_sab.get().isdigit() or not self.entry_car.get().isdigit():
             self.mensagem("Erro", "Prencha os campos de atributos com números para salvar!")
             return
-        # forca, destreza, constituicao, inteligencia, sabedoria, carisma = int(self.eattfor.get()), int(self.eattdex.get()), int(self.eattcon.get()), int(self.eattint.get()), int(self.eattsab.get()), int(self.eattcar.get())
-        # global personagem
-        # personagem = Personagem(self.enome.get(), forca, destreza, constituicao, inteligencia, sabedoria, carisma)
-        # print personagem
+
+        global personagem
+
+        personagem = Personagem(self.entry_nome.get(), int(self.entry_for.get()), int(self.entry_dex.get()), int(self.entry_con.get()), int(self.entry_int.get()), int(self.entry_sab.get()), int(self.entry_con.get()))
+
+        personagem.atualizar()
+        self.clr()
+        self.att()
 
     def NewClass(self):
         print "nova classe"
