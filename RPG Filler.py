@@ -6,11 +6,12 @@ from Personagem import *
 # import sys
 
 personagem = None
-personagem = load_personagem("personagens/Assis.rf")
 
 atualizar = False
 clear = False
-# print personagem
+personagem = load_personagem("personagens/Assis.rf")
+# atualizar = True
+# clear = True
 
 class MenuBar(Menu):
     def __init__(self, parent):
