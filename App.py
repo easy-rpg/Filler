@@ -166,34 +166,83 @@ class Application(Frame):
     def createWidgets(self):
         # self.nome = Text(self, state="disabled", height="1", width=30)
         # self.nome.insert(END, str(personagem.nome))
-        self.nome = Label(self, textvariable=self.rnome, bg="white")
-        self.nome.pack()
+        self.label_nome = Label(self, text="Nome: ").grid(row=0, column=0)
+        self.string_nome = StringVar()
+        self.entry_nome = Entry(self, textvariable=self.string_nome, width=17)
+        self.entry_nome.grid(row=0, column=1 ,columnspan=3)
 
-        self.rattr = StringVar()
-        self.attr = Label(self, textvariable=self.rattr, bg="white")
-        self.attr.pack()
+        self.label_for = Label(self, text="For: ").grid(row=1, column=0)
+        self.string_for = StringVar()
+        self.entry_for = Entry(self, textvariable=self.string_for, width=5)
+        self.entry_for.grid(row=1, column=1)
 
-        self.rlvl = StringVar()
-        self.lvl = Label(self, textvariable=self.rlvl, bg="white")
-        self.lvl.pack()
+        self.label_dex = Label(self, text="Dex: ").grid(row=2, column=0)
+        self.string_dex = StringVar()
+        self.entry_dex = Entry(self, textvariable=self.string_dex, width=5)
+        self.entry_dex.grid(row=2, column=1)
 
-        self.rcls = StringVar()
-        self.cls = Label(self, textvariable=self.rcls, bg="white")
-        self.cls.pack()
+        self.label_con = Label(self, text="Con: ").grid(row=3, column=0)
+        self.string_con = StringVar()
+        self.entry_con = Entry(self, textvariable=self.string_con, width=5)
+        self.entry_con.grid(row=3, column=1)
 
-        self.rbba = StringVar()
-        self.bba = Label(self, textvariable=self.rbba, bg="white")
-        self.bba.pack()
+        self.label_int = Label(self, text="Int: ").grid(row=1, column=2)
+        self.string_int = StringVar()
+        self.entry_int = Entry(self, textvariable=self.string_int, width=5)
+        self.entry_int.grid(row=1, column=3)
 
-        self.rres = StringVar()
-        self.res = Label(self, textvariable=self.rres, bg="white")
-        self.res.pack()
+        self.label_sab = Label(self, text="Sab: ").grid(row=2, column=2)
+        self.string_sab = StringVar()
+        self.entry_sab = Entry(self, textvariable=self.string_sab, width=5)
+        self.entry_sab.grid(row=2, column=3)
 
-        self.upd = Button(self)
-        self.upd["text"] = "Atualizar",
-        self.upd["command"] = self.att
+        self.label_car = Label(self, text="Car: ").grid(row=3, column=2)
+        self.string_car = StringVar()
+        self.entry_car = Entry(self, textvariable=self.string_car, width=5)
+        self.entry_car.grid(row=3, column=3)
 
-        self.upd.pack(side="bottom")  
+        self.label_lvl = Label(self, text="Nivel: ").grid(row=4, column=0)
+        self.string_lvl = StringVar()
+        self.entry_lvl = Entry(self, textvariable=self.string_lvl, width=17)
+        self.entry_lvl.grid(row=4, column=1, columnspan=3)
+
+        self.label_classes = Label(self, text="Classes: ").grid(row=5, column=0)
+        self.string_classes = StringVar()
+        self.entry_classes = Entry(self, textvariable=self.string_classes, width=17)
+        self.entry_classes.grid(row=5, column=1, columnspan=3)
+
+        self.label_bba = Label(self, text="BBA: ").grid(row=6, column=0)
+        self.string_bba = StringVar()
+        self.entry_bba = Entry(self, textvariable=self.string_bba, width=5)
+        self.entry_bba.grid(row=6, column=1)
+
+        self.label_fort = Label(self, text="FORT: ").grid(row=6, column=2)
+        self.string_fort = StringVar()
+        self.entry_fort = Entry(self, textvariable=self.string_fort, width=5)
+        self.entry_fort.grid(row=6, column=3)
+
+        self.label_ref = Label(self, text="REF: ").grid(row=7, column=0)
+        self.string_ref = StringVar()
+        self.entry_ref = Entry(self, textvariable=self.string_ref, width=5)
+        self.entry_ref.grid(row=7, column=1)
+
+        self.label_von = Label(self, text="VON: ").grid(row=7, column=2)
+        self.string_von = StringVar()
+        self.entry_von = Entry(self, textvariable=self.string_von, width=5)
+        self.entry_von.grid(row=7, column=3)
+
+        self.cadastrar_classe = Button(self)
+        self.cadastrar_classe["text"] = "Adicionar Classe"
+        self.cadastrar_classe["command"] = self.NewClass
+        self.cadastrar_classe.grid(row=8, column=0, columnspan=2)
+
+        self.cadastrar_char = Button(self)
+        self.cadastrar_char["text"] = "Salvar"
+        self.cadastrar_char["command"] = self.salvar_char
+        self.cadastrar_char.grid(row=8, column=2, columnspan=2)
+
+    def mensagem(self, title, string):
+        tkMessageBox.showinfo(title, string)
 
     def __init__(self, master=None):
         Frame.__init__(self, master)
