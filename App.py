@@ -101,6 +101,11 @@ class MenuBar(Menu):
         self.mensagem("about", string)
 
 class Application(Frame):
+    def NewClass(self):
+        print "nova classe"
+
+    def salvar_classe(self):
+        print "salvar classe"
     def att(self): 
         global personagem
         if personagem:       
