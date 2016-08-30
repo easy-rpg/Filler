@@ -6,7 +6,10 @@ from Personagem import *
 # import sys
 
 personagem = None
-# personagem = load_personagem("personagens/Assis.rf")
+personagem = load_personagem("personagens/Assis.rf")
+
+atualizar = False
+clear = False
 # print personagem
 
 class MenuBar(Menu):
