@@ -25,6 +25,12 @@ class Personagem(object):
 	def __init__(self, nome, forca, destreza, constituicao, inteligencia, sabedoria, carisma):
 		super(Personagem, self).__init__()
 		self.nome = nome
+		self.life = 0
+		self.nivel = 0
+		self.bba = 0
+		self.fortitude = 0
+		self.reflexos = 0
+		self.vontade = 0
 		self.classes = {}
 		self.atributos = {}
 		self.atributos['for'] = forca
@@ -48,9 +54,17 @@ class Personagem(object):
 	def update_personagem(self):
 		self.life = 0
 		self.nivel = 0
+		self.bba = 0
+		self.fortitude = 0
+		self.reflexos = 0
+		self.vontade = 0
 		for classe in self.classes:
 			self.nivel += self.classes[classe].nivel
 			self.life += self.classes[classe].nivel*(self.classes[classe].dv + (self.atributos['con']-10)/2)
+			self.bba += self.classes[classe].bba
+			self.fortitude += self.classes[classe].fortitude
+			self.reflexos += self.classes[classe].reflexos
+			self.vontade += self.classes[classe].vontade
 
 	def save(self):
 		Writer(self)
@@ -65,7 +79,7 @@ class Personagem(object):
 		if bool(self.classes):
 			string += "classes: "
 			for classe in self.classes:
-				string += classe + " lvl: " + str(self.classes[classe].nivel) + ""
+				string += classe + " lvl: " + str(self.classes[classe].nivel)
 				string += " | "
 			string += "\n"
 		string += "Atributos: "
@@ -73,15 +87,17 @@ class Personagem(object):
 		 	string += atributo + ": " + str(self.atributos[atributo])
 		 	string += "\t"
 		string += "\n"
-
+		string += "BBA: " + str(self.bba)
+		string += "\n"
+		string += "FORT: " + str(self.fortitude) + " | REF: " + str(self.reflexos) + " | VON: " + str(self.vontade)
 		return string
 
 
 # assis = Personagem('Assis', 17, 14, 20, 12, 14, 10)
 # assis.set_class(Barbaro(3))
 # assis.set_class(Guerreiro(4))
-# # print assis
-# # assis.save()
+# # # print assis
+# # # assis.save()
 
 # personagem = load_personagem("personagens/Assis.rf")
 # print personagem
