@@ -66,6 +66,10 @@ class Personagem(object):
 			self.reflexos += self.classes[classe].reflexos
 			self.vontade += self.classes[classe].vontade
 
+		self.fortitude += (self.atributos['con']-10)/2
+		self.reflexos += (self.atributos['dex']-10)/2
+		self.vontade += (self.atributos['sab']-10)/2
+
 	def save(self):
 		Writer(self)
 
