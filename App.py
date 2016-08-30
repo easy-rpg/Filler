@@ -120,6 +120,22 @@ class Application(Frame):
 
     def salvar_classe(self):
         print "salvar classe"
+
+    def clr(self):
+        self.entry_nome.delete(0, END)
+        self.entry_for.delete(0, END)
+        self.entry_dex.delete(0, END)
+        self.entry_con.delete(0, END)
+        self.entry_int.delete(0, END)
+        self.entry_sab.delete(0, END)
+        self.entry_car.delete(0, END)
+        self.entry_lvl.delete(0, END)
+        self.entry_classes.delete(0, END)
+        self.entry_bba.delete(0, END)
+        self.entry_fort.delete(0, END)
+        self.entry_ref.delete(0, END)
+        self.entry_von.delete(0, END)
+
     def att(self): 
         global personagem
         if personagem:       
