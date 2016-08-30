@@ -26,6 +26,7 @@ class MenuBar(Menu):
     def LoadChar(self):
         char = askopenfilename()
         personagem = load_personagem(char)
+        print personagem
         tkMessageBox.showinfo("Personagem carregado", personagem.__str__())
     def About(self):
         mensagem = "O RPG Filler é um programa para automatizar a criação de personagens para o sistema de rpg D&D 3.5."
@@ -36,20 +37,24 @@ class MenuBar(Menu):
         sys.exit(0)
 
 class Application(Frame):
-    # def say_hi(self):
-    #     print "hi there, everyone!"
+    def att(self): 
+        if personagem:       
+            self.result.set(personagem.nome)
 
     def createWidgets(self):
-        self.nome = Text(self, state="disabled", height="1", width=30)
+        # self.nome = Text(self, state="disabled", height="1", width=30)
+        # self.nome.insert(END, str(personagem.nome))
+        self.result = StringVar()
         if personagem:
-            self.nome.insert(INSERT, personagem.nome)
+            self.result.set(personagem.nome)
+        self.nome = Label(self, textvariable=self.result, bg="white")
         self.nome.pack()
 
-        # self.hi_there = Button(self)
-        # self.hi_there["text"] = "Hello",
-        # self.hi_there["command"] = self.say_hi
+        self.upd = Button(self)
+        self.upd["text"] = "Atualizar",
+        self.upd["command"] = self.att
 
-        # self.hi_there.pack(side="bottom")
+        self.upd.pack(side="bottom")
 
     def __init__(self, master=None):
         Frame.__init__(self, master)
@@ -62,7 +67,7 @@ root = Tk()
 root.resizable(width=False, height=False)
 root.geometry('{}x{}'.format(600, 480))
 
-app = Application(master=root)
+# app = Application(master=root)
 
 app.mainloop()
 root.destroy()
