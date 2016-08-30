@@ -9,6 +9,9 @@ personagem = None
 
 atualizar = False
 clear = False
+stop = False
+
+
 personagem = load_personagem("personagens/Assis.rf")
 # atualizar = True
 # clear = True
@@ -22,7 +25,7 @@ class MenuBar(Menu):
         fileMenu.add_command(label="New", underline=1, command=self.NewChar)
         fileMenu.add_command(label="Load...", underline=1, command=self.LoadChar)
         fileMenu.add_separator()
-        fileMenu.add_command(label="Exit", underline=1, command=quit)
+        fileMenu.add_command(label="Exit", underline=1, command=self.quit)
 
         helpMenu = Menu(self, tearoff=False)
         self.add_cascade(label="Help",underline=0, menu=helpMenu)
@@ -100,6 +103,10 @@ class MenuBar(Menu):
         string += "\n"
         string += "Para mais informações acessar https://github.com/rodrigondec/RPG-Filler"
         self.mensagem("about", string)
+
+    def quit(self):
+        global stop
+        stop = True
 
 class Application(Frame):
 
@@ -245,6 +252,10 @@ class Application(Frame):
     def mensagem(self, title, string):
         tkMessageBox.showinfo(title, string)
 
+    def event_exit(self, event):
+        global stop
+        stop = True
+
     def __init__(self, master=None):
         Frame.__init__(self, master)
         self.pack()
@@ -252,7 +263,8 @@ class Application(Frame):
         
         menubar = MenuBar(self)
         master.config(menu=menubar)
-        master.bind("<Escape>", quit)
+        master.bind("<Escape>", self.event_exit)
+        master.bind("<Return>", self.event_salvar_char)
 
 root = Tk()
 root.wm_title("RPG Filler")
@@ -269,8 +281,8 @@ while True:
     if clear:
         app.clr()
         clear = False
+    if stop:
+        break
     app.update_idletasks()
     app.update()
-# app.mainloop()
-
 root.destroy()
