@@ -29,44 +29,47 @@ class MenuBar(Menu):
         helpMenu.add_command(label="About...", underline=1, command=self.About)
 
     def NewChar(self):
-        # self.counter += 1
-        self.t = Toplevel(self)
-        # t.resizable(width=False, height=False)
-        # t.geometry('{}x{}'.format(600, 200))
-        self.t.wm_title("Novo Personagem")
+        global personagem
+        personagem = None
 
-        self.lnome = Label(self.t, text="Nome: ").grid(row=0)
-        self.enome = Entry(self.t)
-        self.enome.grid(row=0, column=1)
+        global clear
+        clear = True
+        
+        # self.t = Toplevel(self)
+        # self.t.wm_title("Novo Personagem")
 
-        self.lattfor = Label(self.t, text="Força: ").grid(row=1, column=0)
-        self.eattfor = Entry(self.t)
-        self.eattfor.grid(row=1, column=1)
+        # self.lnome = Label(self.t, text="Nome: ").grid(row=0)
+        # self.enome = Entry(self.t)
+        # self.enome.grid(row=0, column=1)
 
-        self.lattdex = Label(self.t, text="Destreza: ").grid(row=2, column=0)
-        self.eattdex = Entry(self.t)
-        self.eattdex.grid(row=2, column=1)
+        # self.lattfor = Label(self.t, text="Força: ").grid(row=1, column=0)
+        # self.eattfor = Entry(self.t)
+        # self.eattfor.grid(row=1, column=1)
+
+        # self.lattdex = Label(self.t, text="Destreza: ").grid(row=2, column=0)
+        # self.eattdex = Entry(self.t)
+        # self.eattdex.grid(row=2, column=1)
          
-        self.lattcon = Label(self.t, text="Constituição: ").grid(row=3, column=0)
-        self.eattcon = Entry(self.t)
-        self.eattcon.grid(row=3, column=1)
+        # self.lattcon = Label(self.t, text="Constituição: ").grid(row=3, column=0)
+        # self.eattcon = Entry(self.t)
+        # self.eattcon.grid(row=3, column=1)
 
-        self.lattint = Label(self.t, text="Inteligência: ").grid(row=4, column=0)
-        self.eattint = Entry(self.t)
-        self.eattint.grid(row=4, column=1)
+        # self.lattint = Label(self.t, text="Inteligência: ").grid(row=4, column=0)
+        # self.eattint = Entry(self.t)
+        # self.eattint.grid(row=4, column=1)
 
-        self.lattsab = Label(self.t, text="Sabedoria: ").grid(row=5, column=0)
-        self.eattsab = Entry(self.t)
-        self.eattsab.grid(row=5, column=1)
+        # self.lattsab = Label(self.t, text="Sabedoria: ").grid(row=5, column=0)
+        # self.eattsab = Entry(self.t)
+        # self.eattsab.grid(row=5, column=1)
 
-        self.lattcar = Label(self.t, text="Carisma: ").grid(row=6, column=0)
-        self.eattcar = Entry(self.t)
-        self.eattcar.grid(row=6, column=1)
+        # self.lattcar = Label(self.t, text="Carisma: ").grid(row=6, column=0)
+        # self.eattcar = Entry(self.t)
+        # self.eattcar.grid(row=6, column=1)
 
-        self.button = Button(self.t)
-        self.button["text"] = "Cadastrar",
-        self.button["command"] = self.cadastrar
-        self.button.grid(row=8, columnspan=2)
+        # self.button = Button(self.t)
+        # self.button["text"] = "Cadastrar",
+        # self.button["command"] = self.cadastrar
+        # self.button.grid(row=8, columnspan=2)
 
     def cadastrar(self):
         if not self.enome.get() or not self.eattfor.get() or not self.eattdex.get() or not self.eattcon.get() or not self.eattint.get() or not self.eattsab.get() or not self.eattcar.get():
