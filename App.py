@@ -3,8 +3,11 @@ from Tkinter import *
 from tkFileDialog import askopenfilename
 import tkMessageBox
 from Personagem import *
+# import sys
 
 personagem = None
+# personagem = load_personagem("personagens/Assis.rf")
+# print personagem
 
 class MenuBar(Menu):
     def __init__(self, parent):
@@ -15,59 +18,164 @@ class MenuBar(Menu):
         fileMenu.add_command(label="New", underline=1, command=self.NewChar)
         fileMenu.add_command(label="Load...", underline=1, command=self.LoadChar)
         fileMenu.add_separator()
-        fileMenu.add_command(label="Exit", underline=1, command=self.quit)
+        fileMenu.add_command(label="Exit", underline=1, command=quit)
 
         helpMenu = Menu(self, tearoff=False)
         self.add_cascade(label="Help",underline=0, menu=helpMenu)
 
         helpMenu.add_command(label="About...", underline=1, command=self.About)
+
     def NewChar(self):
-        print "New File!"
+        # self.counter += 1
+        self.t = Toplevel(self)
+        # t.resizable(width=False, height=False)
+        # t.geometry('{}x{}'.format(600, 200))
+        self.t.wm_title("Novo Personagem")
+
+        self.lnome = Label(self.t, text="Nome: ").grid(row=0)
+        self.enome = Entry(self.t)
+        self.enome.grid(row=0, column=1)
+
+        self.lattfor = Label(self.t, text="Força: ").grid(row=1, column=0)
+        self.eattfor = Entry(self.t)
+        self.eattfor.grid(row=1, column=1)
+
+        self.lattdex = Label(self.t, text="Destreza: ").grid(row=2, column=0)
+        self.eattdex = Entry(self.t)
+        self.eattdex.grid(row=2, column=1)
+         
+        self.lattcon = Label(self.t, text="Constituição: ").grid(row=3, column=0)
+        self.eattcon = Entry(self.t)
+        self.eattcon.grid(row=3, column=1)
+
+        self.lattint = Label(self.t, text="Inteligência: ").grid(row=4, column=0)
+        self.eattint = Entry(self.t)
+        self.eattint.grid(row=4, column=1)
+
+        self.lattsab = Label(self.t, text="Sabedoria: ").grid(row=5, column=0)
+        self.eattsab = Entry(self.t)
+        self.eattsab.grid(row=5, column=1)
+
+        self.lattcar = Label(self.t, text="Carisma: ").grid(row=6, column=0)
+        self.eattcar = Entry(self.t)
+        self.eattcar.grid(row=6, column=1)
+
+        self.button = Button(self.t)
+        self.button["text"] = "Cadastrar",
+        self.button["command"] = self.cadastrar
+        self.button.grid(row=8, columnspan=2)
+
+    def cadastrar(self):
+        if not self.enome.get() or not self.eattfor.get() or not self.eattdex.get() or not self.eattcon.get() or not self.eattint.get() or not self.eattsab.get() or not self.eattcar.get():
+            self.mensagem("Erro", "preencha todos os campos!")
+            return
+        forca, destreza, constituicao, inteligencia, sabedoria, carisma = int(self.eattfor.get()), int(self.eattdex.get()), int(self.eattcon.get()), int(self.eattint.get()), int(self.eattsab.get()), int(self.eattcar.get())
+        global personagem
+        personagem = Personagem(self.enome.get(), forca, destreza, constituicao, inteligencia, sabedoria, carisma)
+        print personagem
+        self.t.withdraw()
+        self.mensagem("Personagem criado", "Pressione o botão 'Atualizar'")
+
     def LoadChar(self):
         char = askopenfilename()
+        global personagem
         personagem = load_personagem(char)
-        print personagem
-        tkMessageBox.showinfo("Personagem carregado", personagem.__str__())
+        # print personagem
+        self.mensagem("Personagem carregado", "Pressione o botão 'Atualizar'")
+
+    def mensagem(self, title, string):
+        tkMessageBox.showinfo(title, string)
+
     def About(self):
-        mensagem = "O RPG Filler é um programa para automatizar a criação de personagens para o sistema de rpg D&D 3.5."
-        mensagem += "\n"
-        mensagem += "Para mais informações acessar https://github.com/rodrigondec/RPG-Filler"
-        tkMessageBox.showinfo("About", mensagem)
-    def quit(self):
-        sys.exit(0)
+        string = "O RPG Filler é um programa para automatizar a criação de personagens para o sistema de rpg D&D 3.5."
+        string += "\n"
+        string += "Para mais informações acessar https://github.com/rodrigondec/RPG-Filler"
+        self.mensagem("about", string)
 
 class Application(Frame):
     def att(self): 
+        global personagem
         if personagem:       
-            self.result.set(personagem.nome)
+            self.rnome.set("Nome: "+personagem.nome)
+
+            string = "Força: " + str(personagem.atributos['for'])
+            string += " | "
+            string += "Destreza: " + str(personagem.atributos['dex'])
+            string += " | "
+            string += "Constituição: " + str(personagem.atributos['con'])
+            string += " | "
+            string += "Inteligência: " + str(personagem.atributos['int'])
+            string += " | "
+            string += "Sabedoria: " + str(personagem.atributos['sab'])
+            string += " | "
+            string += "Carisma: " + str(personagem.atributos['car'])
+            string += " | "
+            self.rattr.set(string)
+
+            self.rlvl.set("lvl: "+str(personagem.nivel))
+
+            string = "Classes: "
+            for index in personagem.classes:
+                string += index + " ("+str(personagem.classes[index].nivel)+") "
+            self.rcls.set(string)
+
+            self.rbba.set("BBA: "+str(personagem.bba))
+
+            string = "FOR: " + str(personagem.fortitude)
+            string += " | "
+            string += "REF: " + str(personagem.reflexos)
+            string += " | "
+            string += "VON: " + str(personagem.vontade)
+            self.rres.set(string)
 
     def createWidgets(self):
         # self.nome = Text(self, state="disabled", height="1", width=30)
         # self.nome.insert(END, str(personagem.nome))
-        self.result = StringVar()
-        if personagem:
-            self.result.set(personagem.nome)
-        self.nome = Label(self, textvariable=self.result, bg="white")
+        self.rnome = StringVar()
+        self.nome = Label(self, textvariable=self.rnome, bg="white")
         self.nome.pack()
+
+        self.rattr = StringVar()
+        self.attr = Label(self, textvariable=self.rattr, bg="white")
+        self.attr.pack()
+
+        self.rlvl = StringVar()
+        self.lvl = Label(self, textvariable=self.rlvl, bg="white")
+        self.lvl.pack()
+
+        self.rcls = StringVar()
+        self.cls = Label(self, textvariable=self.rcls, bg="white")
+        self.cls.pack()
+
+        self.rbba = StringVar()
+        self.bba = Label(self, textvariable=self.rbba, bg="white")
+        self.bba.pack()
+
+        self.rres = StringVar()
+        self.res = Label(self, textvariable=self.rres, bg="white")
+        self.res.pack()
 
         self.upd = Button(self)
         self.upd["text"] = "Atualizar",
         self.upd["command"] = self.att
 
-        self.upd.pack(side="bottom")
+        self.upd.pack(side="bottom")  
 
     def __init__(self, master=None):
         Frame.__init__(self, master)
         self.pack()
         self.createWidgets()
+        
         menubar = MenuBar(self)
         master.config(menu=menubar)
+        master.bind("<Escape>", quit)
 
 root = Tk()
+root.wm_title("RPG Filler")
 root.resizable(width=False, height=False)
-root.geometry('{}x{}'.format(600, 480))
+root.geometry('{}x{}'.format(600, 200))
 
-# app = Application(master=root)
-
+app = Application(master=root)
+# app.pack(side="top", fill="both", expand=True)
 app.mainloop()
 root.destroy()
