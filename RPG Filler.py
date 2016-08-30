@@ -5,7 +5,7 @@ import tkMessageBox
 from Personagem import *
 # import sys
 
-personagem = None
+personagem = Personagem()
 
 atualizar = False
 clear = False
@@ -34,7 +34,7 @@ class MenuBar(Menu):
 
     def NewChar(self):
         global personagem
-        personagem = None
+        personagem = Personagem()
 
         global clear
         clear = True
@@ -144,30 +144,29 @@ class Application(Frame):
     def att(self): 
         self.clr()
         global personagem
-        if personagem:   
-            # print personagem.nome
-            self.entry_nome.insert(0, personagem.nome)  
 
-            self.entry_for.insert(0, str(personagem.atributos['for']))
-            self.entry_dex.insert(0, str(personagem.atributos['dex'])) 
-            self.entry_con.insert(0, str(personagem.atributos['con'])) 
-            self.entry_int.insert(0, str(personagem.atributos['int'])) 
-            self.entry_sab.insert(0, str(personagem.atributos['sab'])) 
-            self.entry_car.insert(0, str(personagem.atributos['car'])) 
+        self.entry_nome.insert(0, personagem.nome)  
 
-            self.entry_lvl.insert(0, str(personagem.nivel))
-            self.entry_life.insert(0, str(personagem.life))
+        self.entry_for.insert(0, str(personagem.atributos['for']))
+        self.entry_dex.insert(0, str(personagem.atributos['dex'])) 
+        self.entry_con.insert(0, str(personagem.atributos['con'])) 
+        self.entry_int.insert(0, str(personagem.atributos['int'])) 
+        self.entry_sab.insert(0, str(personagem.atributos['sab'])) 
+        self.entry_car.insert(0, str(personagem.atributos['car'])) 
 
-            string = ""
-            for index in personagem.classes:
-                string += index + " ("+str(personagem.classes[index].nivel)+") "
-            self.entry_classes.insert(0, string)
+        self.entry_lvl.insert(0, str(personagem.nivel))
+        self.entry_life.insert(0, str(personagem.life))
 
-            self.entry_bba.insert(0, str(personagem.bba))
+        string = ""
+        for index in personagem.classes:
+            string += index + " ("+str(personagem.classes[index].nivel)+") "
+        self.entry_classes.insert(0, string)
 
-            self.entry_fort.insert(0, str(personagem.fortitude))
-            self.entry_ref.insert(0, str(personagem.reflexos))
-            self.entry_von.insert(0, str(personagem.vontade))
+        self.entry_bba.insert(0, str(personagem.bba))
+
+        self.entry_fort.insert(0, str(personagem.fortitude))
+        self.entry_ref.insert(0, str(personagem.reflexos))
+        self.entry_von.insert(0, str(personagem.vontade))
 
     def createWidgets(self):
         # self.nome = Text(self, state="disabled", height="1", width=30)
