@@ -22,7 +22,7 @@ def load_personagem(caminho):
 
 class Personagem(object):
 	"""docstring for Personagem"""
-	def __init__(self, nome, forca, destreza, constituicao, inteligencia, sabedoria, carisma):
+	def __init__(self, nome=None, forca=None, destreza=None, constituicao=None, inteligencia=None, sabedoria=None, carisma=None):
 		super(Personagem, self).__init__()
 		self.nome = nome
 		self.life = 0
@@ -40,7 +40,8 @@ class Personagem(object):
 		self.atributos['sab'] = sabedoria
 		self.atributos['car'] = carisma
 
-		self.atualizar()
+		if self.nome:
+			self.atualizar()
 
 	def set_class(self, obj):
 		self.classes[type(obj).__name__] = obj
