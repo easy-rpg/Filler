@@ -80,14 +80,16 @@ class MenuBar(Menu):
         personagem = Personagem(self.enome.get(), forca, destreza, constituicao, inteligencia, sabedoria, carisma)
         print personagem
         self.t.withdraw()
-        self.mensagem("Personagem criado", "Pressione o botão 'Atualizar'")
+        # self.mensagem("Aviso", "Personagem criado com sucesso")
 
     def LoadChar(self):
         char = askopenfilename()
         global personagem
         personagem = load_personagem(char)
         # print personagem
-        self.mensagem("Personagem carregado", "Pressione o botão 'Atualizar'")
+        global atualizar
+        atualizar = True
+        # self.mensagem("Aviso", "Personagem carregado com sucesso")
 
     def mensagem(self, title, string):
         tkMessageBox.showinfo(title, string)
@@ -179,9 +181,20 @@ class Application(Frame):
 root = Tk()
 root.wm_title("RPG Filler")
 root.resizable(width=False, height=False)
-root.geometry('{}x{}'.format(600, 200))
+root.geometry('{}x{}'.format(300, 220))
 
 app = Application(master=root)
 # app.pack(side="top", fill="both", expand=True)
-app.mainloop()
+
+while True:
+    if atualizar:
+        app.att()
+        atualizar = False
+    if clear:
+        app.clr()
+        clear = False
+    app.update_idletasks()
+    app.update()
+# app.mainloop()
+
 root.destroy()
