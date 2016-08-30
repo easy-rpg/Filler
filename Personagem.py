@@ -17,7 +17,7 @@ def load_personagem(caminho):
 		class_ = getattr(modul, classe)
 		instance = class_(d['classes'][classe])
 		personagem.set_class(instance)
-
+	
 	return personagem
 
 class Personagem(object):
@@ -49,7 +49,7 @@ class Personagem(object):
 
 	def atualizar(self):
 		self.update_personagem()
-		self.save()
+		self.salvar()
 
 	def update_personagem(self):
 		self.life = 0
@@ -70,7 +70,8 @@ class Personagem(object):
 		self.reflexos += (self.atributos['dex']-10)/2
 		self.vontade += (self.atributos['sab']-10)/2
 
-	def save(self):
+	def salvar(self):
+		# print "salvou?"
 		Writer(self)
 
 	def __str__(self):
