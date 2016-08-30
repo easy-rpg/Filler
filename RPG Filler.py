@@ -113,7 +113,13 @@ class Application(Frame):
 
         global personagem
 
-        personagem = Personagem(self.entry_nome.get(), int(self.entry_for.get()), int(self.entry_dex.get()), int(self.entry_con.get()), int(self.entry_int.get()), int(self.entry_sab.get()), int(self.entry_con.get()))
+        personagem.nome = self.entry_nome.get()
+        personagem.atributos['for'] = int(self.entry_for.get())
+        personagem.atributos['dex'] = int(self.entry_dex.get())
+        personagem.atributos['con'] = int(self.entry_con.get())
+        personagem.atributos['int'] = int(self.entry_int.get())
+        personagem.atributos['sab'] = int(self.entry_sab.get())
+        personagem.atributos['car'] = int(self.entry_car.get())
 
         personagem.atualizar()
         self.clr()
