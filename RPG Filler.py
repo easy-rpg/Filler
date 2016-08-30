@@ -134,6 +134,7 @@ class Application(Frame):
         self.entry_sab.delete(0, END)
         self.entry_car.delete(0, END)
         self.entry_lvl.delete(0, END)
+        self.entry_life.delete(0, END)
         self.entry_classes.delete(0, END)
         self.entry_bba.delete(0, END)
         self.entry_fort.delete(0, END)
@@ -155,6 +156,7 @@ class Application(Frame):
             self.entry_car.insert(0, str(personagem.atributos['car'])) 
 
             self.entry_lvl.insert(0, str(personagem.nivel))
+            self.entry_life.insert(0, str(personagem.life))
 
             string = ""
             for index in personagem.classes:
@@ -207,8 +209,13 @@ class Application(Frame):
 
         self.label_lvl = Label(self, text="Nivel: ").grid(row=4, column=0)
         self.string_lvl = StringVar()
-        self.entry_lvl = Entry(self, textvariable=self.string_lvl, width=17)
-        self.entry_lvl.grid(row=4, column=1, columnspan=3)
+        self.entry_lvl = Entry(self, textvariable=self.string_lvl, width=5)
+        self.entry_lvl.grid(row=4, column=1)
+
+        self.label_life = Label(self, text="Life: ").grid(row=4, column=2)
+        self.string_life = StringVar()
+        self.entry_life = Entry(self, textvariable=self.string_life, width=5)
+        self.entry_life.grid(row=4, column=3)
 
         self.label_classes = Label(self, text="Classes: ").grid(row=5, column=0)
         self.string_classes = StringVar()
