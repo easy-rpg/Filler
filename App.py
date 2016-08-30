@@ -1,5 +1,10 @@
+#coding=utf-8
 from Tkinter import *
-from tkFileDialog   import askopenfilename
+from tkFileDialog import askopenfilename
+import tkMessageBox
+from Personagem import *
+
+personagem = None
 
 class MenuBar(Menu):
     def __init__(self, parent):
@@ -7,8 +12,8 @@ class MenuBar(Menu):
         fileMenu = Menu(self, tearoff=False)
         self.add_cascade(label="File",underline=0, menu=fileMenu)
 
-        fileMenu.add_command(label="New", underline=1, command=self.NewFile)
-        fileMenu.add_command(label="Open...", underline=1, command=self.OpenFile)
+        fileMenu.add_command(label="New", underline=1, command=self.NewChar)
+        fileMenu.add_command(label="Load...", underline=1, command=self.LoadChar)
         fileMenu.add_separator()
         fileMenu.add_command(label="Exit", underline=1, command=self.quit)
 
@@ -16,27 +21,35 @@ class MenuBar(Menu):
         self.add_cascade(label="Help",underline=0, menu=helpMenu)
 
         helpMenu.add_command(label="About...", underline=1, command=self.About)
-    def NewFile(self):
+    def NewChar(self):
         print "New File!"
-    def OpenFile(self):
-        name = askopenfilename()
-        print name
+    def LoadChar(self):
+        char = askopenfilename()
+        personagem = load_personagem(char)
+        tkMessageBox.showinfo("Personagem carregado", personagem.__str__())
     def About(self):
-        print "This is a simple example of a menu"
+        mensagem = "O RPG Filler é um programa para automatizar a criação de personagens para o sistema de rpg D&D 3.5."
+        mensagem += "\n"
+        mensagem += "Para mais informações acessar https://github.com/rodrigondec/RPG-Filler"
+        tkMessageBox.showinfo("About", mensagem)
     def quit(self):
         sys.exit(0)
 
 class Application(Frame):
-    def say_hi(self):
-        print "hi there, everyone!"
+    # def say_hi(self):
+    #     print "hi there, everyone!"
 
     def createWidgets(self):
+        self.nome = Text(self, state="disabled", height="1", width=30)
+        if personagem:
+            self.nome.insert(INSERT, personagem.nome)
+        self.nome.pack()
 
-        self.hi_there = Button(self)
-        self.hi_there["text"] = "Hello",
-        self.hi_there["command"] = self.say_hi
+        # self.hi_there = Button(self)
+        # self.hi_there["text"] = "Hello",
+        # self.hi_there["command"] = self.say_hi
 
-        self.hi_there.pack({"side": "left"})
+        # self.hi_there.pack(side="bottom")
 
     def __init__(self, master=None):
         Frame.__init__(self, master)
