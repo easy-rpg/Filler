@@ -101,6 +101,20 @@ class MenuBar(Menu):
         self.mensagem("about", string)
 
 class Application(Frame):
+
+    def salvar_char(self):
+        print "salvar char"
+        if not self.entry_nome.get() or not self.entry_for.get() or not self.entry_dex.get() or not self.entry_con.get() or not self.entry_int.get() or not self.entry_sab.get() or not self.entry_car.get():
+            self.mensagem("Erro", "Prencha o campo de nome e de atributos antes de salvar!")
+            return
+        if  not self.entry_for.get().isdigit() or not self.entry_dex.get().isdigit() or not self.entry_con.get().isdigit() or not self.entry_int.get().isdigit() or not self.entry_sab.get().isdigit() or not self.entry_car.get().isdigit():
+            self.mensagem("Erro", "Prencha os campos de atributos com números para salvar!")
+            return
+        # forca, destreza, constituicao, inteligencia, sabedoria, carisma = int(self.eattfor.get()), int(self.eattdex.get()), int(self.eattcon.get()), int(self.eattint.get()), int(self.eattsab.get()), int(self.eattcar.get())
+        # global personagem
+        # personagem = Personagem(self.enome.get(), forca, destreza, constituicao, inteligencia, sabedoria, carisma)
+        # print personagem
+
     def NewClass(self):
         print "nova classe"
 
