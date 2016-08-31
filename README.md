@@ -28,7 +28,7 @@
 					<li>
 						<h5>Erro: "python não é reconhecido como um comando interno"</h5>
 						<p>
-							Caso ocorra esse erro ao executar o comando "python RPGFiller.py", dé uma olhada no link desse <a href="http://stackoverflow.com/questions/7054424/python-not-recognised-as-a-command">fórum</a>
+							Caso ocorra esse erro ao executar o comando "python RPGFiller.py", dê uma olhada nesse <a href="http://stackoverflow.com/questions/7054424/python-not-recognised-as-a-command">fórum</a>
 						</p>
 					</li>
 				</ul>
@@ -41,8 +41,33 @@
 			</li>
 		</ul>
 	</li>
+	<li>
+		<h4>Informações sobre o RPG Filler</h4>
+	</li>
 </ul>
-<p></p>
+<h2>DEV's</h2>
+<ul>
+	<li>
+		<h3>Classes</h3>
+		<ul>
+			<li>
+				
+			</li>
+			<li>
+				
+			</li>
+			<li>
+				
+			</li>
+			<li>
+				
+			</li>
+			<li>
+				
+			</li>
+		</ul>
+	</li>
+</ul>
 
 
 
