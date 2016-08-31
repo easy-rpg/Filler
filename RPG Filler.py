@@ -30,6 +30,7 @@ class MenuBar(Menu):
         helpMenu = Menu(self, tearoff=False)
         self.add_cascade(label="Help",underline=0, menu=helpMenu)
 
+        helpMenu.add_command(label="Instruções", underline=1, command=self.instr)
         helpMenu.add_command(label="About...", underline=1, command=self.About)
 
     def NewChar(self):
@@ -86,6 +87,19 @@ class MenuBar(Menu):
 
     def mensagem(self, title, string):
         tkMessageBox.showinfo(title, string)
+
+    def instr(self):
+        string = "Para criar um novo personagem basta preencher os campos e clicar em 'salvar' ou digitar 'enter'."
+        string += "\n"
+        string += "Apenas o nome, atributos e classes adicionadas são salvos. O life, nível, bba e testes de resistência são calculados automaticamente."
+        string += "\n"
+        string += "Não preencher tais campos :D"
+        string += "\n\n"
+        string += "Para carregar um personagem existente basta selecionar a opção 'load...' do menu 'file'."
+        string += "\n\n"
+        string += "Para adiciona uma classe ao personagem basta clicar em 'adicionar classe' e preencher os campos da nova janela."
+
+        self.mensagem("Instruções", string)
 
     def About(self):
         string = "O RPG Filler é um programa para automatizar a criação de personagens para o sistema de rpg D&D 3.5."
