@@ -1,5 +1,10 @@
 <h1>RPG Filler</h1>
-<p>Programa para automatizar a criação de personagens do RPG D&D 3.5</p>
+<p>
+	Programa para automatizar a criação de personagens do RPG D&D 3.5
+</p>
+<p>
+	O RPG Filler é um conjunto de scripts feitos em Python, então para poder executá-lo é necessário ter o Python instalado no seu computador. Caso não tenha acesse <a href="https://www.python.org/">https://www.python.org/</a> para baixar.
+</p>
 <h2>Como utilizar</h2>
 <ul>
 	<li>
@@ -11,8 +16,6 @@
 	<li>
 		<h4>Executar</h4>
 		<p>
-			O RPG Filler é um conjunto de scripts feitos em Python, então para poder executá-lo é necessário ter o Python instalado no seu computador. <br />
-			Caso não tenha acesse <a href="https://www.python.org/">https://www.python.org/</a> para baixar.<br />
 			Dentro da pasta extraída, há um arquivo chamado "RPGFiller.py". Este é o arquivo 'executável'.
 		</p>
 		<ul>
