@@ -108,7 +108,16 @@
 				</ul>
 			</li>
 			<li>
-				<b>Personagem</b>: 
+				<b>Personagem</b>: classe que implementa um personagem. Um personagem pode ter várias <i>classes</i>. 
+				<h4>Métodos da classe</h4>
+				<ul>
+					<li>
+						set_class(obj): método que recebe um obj da especialização da classe <i>Class</i> e armazena numa lista
+					</li>
+					<li>
+						
+					</li>
+				</ul>
 			</li>
 			<li>
 				<b>Situacao</b>: 
