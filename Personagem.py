@@ -45,7 +45,8 @@ class Personagem(object):
 
 	def set_class(self, obj):
 		self.classes[type(obj).__name__] = obj
-		self.atualizar()
+		if self.nome:
+			self.atualizar()
 		return Situacao(True, "Classe adicionada com sucesso")
 
 	def atualizar(self):

@@ -173,7 +173,6 @@ class Paladino(Class):
 	def __init__(self, nivel):
 		Class.__init__(self, nivel)
 
-
 class Ranger(object):
 	"""docstring for Ranger"""
 	nome = "Ranger"
