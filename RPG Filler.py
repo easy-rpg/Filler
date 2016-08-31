@@ -34,42 +34,6 @@ class MenuBar(Menu):
 
         global clear
         clear = True
-        
-        # self.t = Toplevel(self)
-        # self.t.wm_title("Novo Personagem")
-
-        # self.lnome = Label(self.t, text="Nome: ").grid(row=0)
-        # self.enome = Entry(self.t)
-        # self.enome.grid(row=0, column=1)
-
-        # self.lattfor = Label(self.t, text="Força: ").grid(row=1, column=0)
-        # self.eattfor = Entry(self.t)
-        # self.eattfor.grid(row=1, column=1)
-
-        # self.lattdex = Label(self.t, text="Destreza: ").grid(row=2, column=0)
-        # self.eattdex = Entry(self.t)
-        # self.eattdex.grid(row=2, column=1)
-         
-        # self.lattcon = Label(self.t, text="Constituição: ").grid(row=3, column=0)
-        # self.eattcon = Entry(self.t)
-        # self.eattcon.grid(row=3, column=1)
-
-        # self.lattint = Label(self.t, text="Inteligência: ").grid(row=4, column=0)
-        # self.eattint = Entry(self.t)
-        # self.eattint.grid(row=4, column=1)
-
-        # self.lattsab = Label(self.t, text="Sabedoria: ").grid(row=5, column=0)
-        # self.eattsab = Entry(self.t)
-        # self.eattsab.grid(row=5, column=1)
-
-        # self.lattcar = Label(self.t, text="Carisma: ").grid(row=6, column=0)
-        # self.eattcar = Entry(self.t)
-        # self.eattcar.grid(row=6, column=1)
-
-        # self.button = Button(self.t)
-        # self.button["text"] = "Cadastrar",
-        # self.button["command"] = self.cadastrar
-        # self.button.grid(row=8, columnspan=2)
 
     def LoadChar(self):
         char = askopenfilename()
@@ -132,7 +96,36 @@ class Application(Frame):
         self.att()
 
     def NewClass(self):
-        print "nova classe"
+        self.t = Toplevel(self)
+        self.t.wm_title("Novo Personagem")
+        self.t.bind("<Return>", self.event_salvar_classe)
+
+        self.label_lista_classe = Label(self.t, text="Classe: ").grid(row=0)
+        self.lista_classes = Listbox(self.t, selectmode=BROWSE)
+        self.lista_classes.grid(row=0, column=1)
+
+        self.lista_classes.insert(END, "Barbaro")
+        self.lista_classes.insert(END, "Bardo")
+        self.lista_classes.insert(END, "Clerigo")
+        self.lista_classes.insert(END, "Druida")
+        self.lista_classes.insert(END, "Guerreiro")
+        self.lista_classes.insert(END, "Ladino")
+        self.lista_classes.insert(END, "Mago")
+        self.lista_classes.insert(END, "Monge")
+        self.lista_classes.insert(END, "Paladino")
+        self.lista_classes.insert(END, "Ranger")
+
+        self.label_cnivel = Label(self.t, text="Nível: ").grid(row=1, column=0)
+        self.entry_cnivel = Entry(self.t)
+        self.entry_cnivel.grid(row=1, column=1)
+
+        self.button = Button(self.t)
+        self.button["text"] = "Cadastrar",
+        self.button["command"] = self.salvar_classe
+        self.button.grid(row=2, columnspan=2)
+
+    def event_salvar_classe(self, event):
+        self.salvar_classe()
 
     def salvar_classe(self):
         print "salvar classe"
