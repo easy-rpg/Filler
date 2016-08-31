@@ -156,14 +156,32 @@ class Application(Frame):
         self.entry_car.delete(0, END)
         self.entry_lvl.delete(0, END)
         self.entry_life.delete(0, END)
+        
+    def clr_classe(self):
         self.entry_classes.delete(0, END)
         self.entry_bba.delete(0, END)
         self.entry_fort.delete(0, END)
         self.entry_ref.delete(0, END)
         self.entry_von.delete(0, END)
 
+    def att_classe(self):
+        self.clr_classe()
+        global personagem
+
+        string = ""
+        for index in personagem.classes:
+            string += index + " ("+str(personagem.classes[index].nivel)+") "
+        self.entry_classes.insert(0, string)
+
+        self.entry_bba.insert(0, str(personagem.bba))
+
+        self.entry_fort.insert(0, str(personagem.fortitude))
+        self.entry_ref.insert(0, str(personagem.reflexos))
+        self.entry_von.insert(0, str(personagem.vontade))
+
     def att(self): 
         self.clr()
+        self.att_classe()
         global personagem
 
         self.entry_nome.insert(0, personagem.nome)  
@@ -178,20 +196,7 @@ class Application(Frame):
         self.entry_lvl.insert(0, str(personagem.nivel))
         self.entry_life.insert(0, str(personagem.life))
 
-        string = ""
-        for index in personagem.classes:
-            string += index + " ("+str(personagem.classes[index].nivel)+") "
-        self.entry_classes.insert(0, string)
-
-        self.entry_bba.insert(0, str(personagem.bba))
-
-        self.entry_fort.insert(0, str(personagem.fortitude))
-        self.entry_ref.insert(0, str(personagem.reflexos))
-        self.entry_von.insert(0, str(personagem.vontade))
-
     def createWidgets(self):
-        # self.nome = Text(self, state="disabled", height="1", width=30)
-        # self.nome.insert(END, str(personagem.nome))
         self.label_nome = Label(self, text="Nome: ").grid(row=0, column=0)
         self.string_nome = StringVar()
         self.entry_nome = Entry(self, textvariable=self.string_nome, width=17)
