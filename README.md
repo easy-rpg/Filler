@@ -109,15 +109,23 @@
 			</li>
 			<li>
 				<b>Personagem</b>: classe que implementa um personagem. Um personagem pode ter várias <i>classes</i>. 
-				<h4>Métodos da classe</h4>
-				<ul>
-					<li>
-						set_class(obj): método que recebe um obj da especialização da classe <i>Class</i> e armazena numa lista
-					</li>
-					<li>
-						
-					</li>
-				</ul>
+				<p>
+					<h5>Métodos da classe</h5>
+					<ul>
+						<li>
+							set_class(obj): método que recebe um obj da especialização da classe <i>Class</i> e armazena numa lista
+						</li>
+						<li>
+							atualizar(): método para chamar os métodos update_personagem() e salvar()
+						</li>
+						<li>
+							update_personagem(): método que recalcula todas as informações do personagem
+						</li>
+						<li>
+							salvar(): método que passa a instância do personagem pra classe <i>Writer</i>
+						</li>
+					</ul>
+				</p>
 			</li>
 			<li>
 				<b>Situacao</b>: 
