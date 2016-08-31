@@ -67,40 +67,60 @@
 		<h3>Classes Implementadas</h3>
 		<ul>
 			<li>
-				BBA
+				<b>BBA</b>: classes que implementam os valores da BBA boa (de guerreiros e etc) e da BBA ruim (de magos e etc). Servem apenas para armazenar tais valores e não são instânciadas.
 			</li>
 			<li>
-				Class
+				<b>Class</b>: classe "Ser Superior" abstrata que será herdada pelas classes descritas abaixo. 
 				<ul>
-					<li>Bárbaro</li>
-					<li>Bardo</li>
-					<li>Clérigo</li>
-					<li>Druida</li>
-					<li>Guerreiro</li>
-					<li>Ladino</li>
-					<li>Mago</li>
-					<li>Monge</li>
-					<li>Paladino</li>
-					<li>Ranger</li>
+					<li>
+						<b>Bárbaro</b>: 
+					</li>
+					<li>
+						<b>Bardo</b>: 
+					</li>
+					<li>
+						<b>Clérigo</b>: 
+					</li>
+					<li>
+						<b>Druida</b>: 
+					</li>
+					<li>
+						<b>Guerreiro</b>: 
+					</li>
+					<li>
+						<b>Ladino</b>: 
+					</li>
+					<li>
+						<b>Mago</b>: 
+					</li>
+					<li>
+						<b>Monge</b>: 
+					</li>
+					<li>
+						<b>Paladino</b>: 
+					</li>
+					<li>
+						<b>Ranger</b>: 
+					</li>
 				</ul>
 			</li>
 			<li>
-				Personagem
+				<b>Personagem</b>: 
 			</li>
 			<li>
-				Resist
+				<b>Resist</b>: 
 			</li>
 			<li>
-				Situacao
+				<b>Situacao</b>: 
 			</li>
 			<li>
-				Writer
+				<b>Writer</b>: 
 			</li>
 			<li>
-				Application
+				<b>Application</b>: 
 			</li>
 			<li>
-				MenuBar
+				<b>MenuBar</b>: 
 			</li>
 		</ul>
 	</li>
