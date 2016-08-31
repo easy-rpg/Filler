@@ -128,7 +128,23 @@ class Application(Frame):
         self.salvar_classe()
 
     def salvar_classe(self):
-        print "salvar classe"
+        if not self.entry_cnivel.get() or not self.lista_classes.curselection():
+            self.mensagem("Erro", "Selecione a classe e digite o nível da classe")
+            return
+        if  not self.entry_cnivel.get().isdigit():
+            self.mensagem("Erro", "Prencha os campos de atributos com números para salvar!")
+            return
+
+        nome_classe = self.lista_classes.get(self.lista_classes.curselection()[0])
+        modul = __import__("Classes")
+        class_ = getattr(modul, nome_classe)
+        classe = class_(int(self.entry_cnivel.get()))
+        personagem.set_class(classe)
+        self.t.withdraw()
+        if personagem.nome:
+            self.att()
+        else:
+            self.att_classe()
 
     def clr(self):
         self.entry_nome.delete(0, END)
