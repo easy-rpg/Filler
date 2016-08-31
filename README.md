@@ -9,10 +9,15 @@
 		</p>
 	</li>
 	<li>
-		<label><<b>Executar</b></label>
+		<label><b>Executar</b></label>
 		<p>
-			
+			Dentro da pasta extraída, há um arquivo chamado "RPGFiller.py". Este é o arquivo 'executável'.
 		</p>
+		<hr>
+		<h3>Windows</h3>
+		<p>Windows</p>
+		<h3>Linux</h3>
+		<p>Linux</p>
 	</li>
 </ul>
 <p></p>
