@@ -3,7 +3,12 @@
 from Tkinter import *
 from tkFileDialog import askopenfilename
 import tkMessageBox
+import inspect
 from Personagem import *
+import Classes
+
+lista_classes = [m[0] for m in inspect.getmembers(Classes, inspect.isclass) if m[1].__module__ == 'Classes']
+lista_classes.remove("Class")
 
 personagem = Personagem()
 
@@ -104,16 +109,8 @@ class Application(Frame):
         self.lista_classes = Listbox(self.t, selectmode=BROWSE)
         self.lista_classes.grid(row=0, column=1)
 
-        self.lista_classes.insert(END, "Barbaro")
-        self.lista_classes.insert(END, "Bardo")
-        self.lista_classes.insert(END, "Clerigo")
-        self.lista_classes.insert(END, "Druida")
-        self.lista_classes.insert(END, "Guerreiro")
-        self.lista_classes.insert(END, "Ladino")
-        self.lista_classes.insert(END, "Mago")
-        self.lista_classes.insert(END, "Monge")
-        self.lista_classes.insert(END, "Paladino")
-        self.lista_classes.insert(END, "Ranger")
+        for classe in lista_classes:
+            self.lista_classes.insert(END, classe)
 
         self.label_cnivel = Label(self.t, text="Nível: ").grid(row=1, column=0)
         self.entry_cnivel = Entry(self.t)
