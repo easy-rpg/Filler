@@ -4,18 +4,12 @@ from Tkinter import *
 from tkFileDialog import askopenfilename
 import tkMessageBox
 from Personagem import *
-# import sys
 
 personagem = Personagem()
 
 atualizar = False
 clear = False
 stop = False
-
-
-personagem = load_personagem("personagens/Assis.rf")
-# atualizar = True
-# clear = True
 
 class MenuBar(Menu):
     def __init__(self, parent):
@@ -81,10 +75,8 @@ class MenuBar(Menu):
         char = askopenfilename()
         global personagem
         personagem = load_personagem(char)
-        # print personagem
         global atualizar
         atualizar = True
-        # self.mensagem("Aviso", "Personagem carregado com sucesso")
 
     def mensagem(self, title, string):
         tkMessageBox.showinfo(title, string)
@@ -98,7 +90,7 @@ class MenuBar(Menu):
         string += "\n\n"
         string += "Para carregar um personagem existente basta selecionar a opção 'load...' do menu 'file'."
         string += "\n\n"
-        string += "Para adiciona uma classe ao personagem basta clicar em 'adicionar classe' e preencher os campos da nova janela."
+        string += "Para adiciona uma classe ao personagem basta clicar em 'Configurar classe' e preencher os campos da nova janela."
 
         self.mensagem("Instruções", string)
 
@@ -118,7 +110,6 @@ class Application(Frame):
         self.salvar_char()
 
     def salvar_char(self):
-        print "salvar char"
         if not self.entry_nome.get() or not self.entry_for.get() or not self.entry_dex.get() or not self.entry_con.get() or not self.entry_int.get() or not self.entry_sab.get() or not self.entry_car.get():
             self.mensagem("Erro", "Prencha o campo de nome e de atributos antes de salvar!")
             return
@@ -263,7 +254,7 @@ class Application(Frame):
         self.entry_von.grid(row=7, column=3)
 
         self.cadastrar_classe = Button(self)
-        self.cadastrar_classe["text"] = "Adicionar Classe"
+        self.cadastrar_classe["text"] = "Configurar Classe"
         self.cadastrar_classe["command"] = self.NewClass
         self.cadastrar_classe.grid(row=8, column=0, columnspan=2)
 
@@ -295,7 +286,6 @@ root.resizable(width=False, height=False)
 root.geometry('{}x{}'.format(300, 220))
 
 app = Application(master=root)
-# app.pack(side="top", fill="both", expand=True)
 
 while True:
     if atualizar:
@@ -308,4 +298,5 @@ while True:
         break
     app.update_idletasks()
     app.update()
+
 root.destroy()
