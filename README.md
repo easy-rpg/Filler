@@ -43,6 +43,22 @@
 	</li>
 	<li>
 		<h4>Informações sobre o RPG Filler</h4>
+		<p>
+			O RPG Filler automatiza a criação de um personagem de D&D 3.5 calculando automaticamente o BBA, life e testes de resistência com base nas classes inseridas no personagem. 
+			As classes disponíveis são:
+		</p>
+		<ul>
+			<li>Bárbaro</li>
+			<li>Bardo</li>
+			<li>Clérigo</li>
+			<li>Druida</li>
+			<li>Guerreiro</li>
+			<li>Ladino</li>
+			<li>Mago</li>
+			<li>Monge</li>
+			<li>Paladino</li>
+			<li>Ranger</li>
+		</ul>
 	</li>
 </ul>
 <h2>DEV's</h2>
