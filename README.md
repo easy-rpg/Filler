@@ -128,16 +128,16 @@
 				</p>
 			</li>
 			<li>
-				<b>Situacao</b>: 
+				<b>Situacao</b>: classe que implementa uma situação de retorno (uma tupla de bool e string)
 			</li>
 			<li>
-				<b>Writer</b>: 
+				<b>Writer</b>: classe responsável pela persistência do do objeto da classe Personagem em um arquivo JSON
 			</li>
 			<li>
-				<b>Application</b>: 
+				<b>Application</b>: classe que implementa a GUI utilizando a biblioteca TKinter
 			</li>
 			<li>
-				<b>MenuBar</b>: 
+				<b>MenuBar</b>: classe que implementa uma barra de menu da GUI
 			</li>
 		</ul>
 	</li>
