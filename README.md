@@ -67,48 +67,48 @@
 		<h3>Classes Implementadas</h3>
 		<ul>
 			<li>
-				<b>BBA</b>: classes que implementam os valores da BBA boa (de guerreiros e etc) e da BBA ruim (de magos e etc). Servem apenas para armazenar tais valores e não são instânciadas.
+				<b>BBA</b>: classes que implementam os valores da BBA boa (de guerreiros e etc) e da BBA ruim (de magos e etc) do nível 0 ao nível 20. Servem apenas para armazenar tais valores e não são instânciadas. Implementada no arquivo "BBA.py"
 			</li>
 			<li>
-				<b>Class</b>: classe "Ser Superior" abstrata que será herdada pelas classes descritas abaixo. 
+				<b>Resist</b>: classes que implementam os valores da resisência boa e da resisência ruim do nível 0 ao nível 20. Servem apenas para armazenar tais valores e não são instânciadas. Implementada no arquivo "Resist.py"
+			</li>
+			<li>
+				<b>Class</b>: classe "Ser Superior" abstrata que será herdada pelas classes descritas abaixo. Possui a lógico de cálculo da BBA e testes de resistência para determinado nível. Implementada no arquivo "Classes.py"
 				<ul>
 					<li>
-						<b>Bárbaro</b>: 
+						<b>Bárbaro</b>: classe que implementa as características (dado de vida da classe, lista de perícias da classe, quantidade de perícias por nivel, qual tipo de BBA é a da classe e quais tipos de testes de resistência são da classe) do Bárbaro. Implementada no arquivo "Classes.py"
 					</li>
 					<li>
-						<b>Bardo</b>: 
+						<b>Bardo</b>: classe que implementa as características (dado de vida da classe, lista de perícias da classe, quantidade de perícias por nivel, qual tipo de BBA é a da classe e quais tipos de testes de resistência são da classe) do Bardo. Implementada no arquivo "Classes.py"
 					</li>
 					<li>
-						<b>Clérigo</b>: 
+						<b>Clérigo</b>: classe que implementa as características (dado de vida da classe, lista de perícias da classe, quantidade de perícias por nivel, qual tipo de BBA é a da classe e quais tipos de testes de resistência são da classe) Clérigo. Implementada no arquivo "Classes.py"
 					</li>
 					<li>
-						<b>Druida</b>: 
+						<b>Druida</b>: classe que implementa as características (dado de vida da classe, lista de perícias da classe, quantidade de perícias por nivel, qual tipo de BBA é a da classe e quais tipos de testes de resistência são da classe) Druida. Implementada no arquivo "Classes.py"
 					</li>
 					<li>
-						<b>Guerreiro</b>: 
+						<b>Guerreiro</b>: classe que implementa as características (dado de vida da classe, lista de perícias da classe, quantidade de perícias por nivel, qual tipo de BBA é a da classe e quais tipos de testes de resistência são da classe) Guerreiro. Implementada no arquivo "Classes.py"
 					</li>
 					<li>
-						<b>Ladino</b>: 
+						<b>Ladino</b>: classe que implementa as características (dado de vida da classe, lista de perícias da classe, quantidade de perícias por nivel, qual tipo de BBA é a da classe e quais tipos de testes de resistência são da classe) Ladino. Implementada no arquivo "Classes.py"
 					</li>
 					<li>
-						<b>Mago</b>: 
+						<b>Mago</b>: classe que implementa as características (dado de vida da classe, lista de perícias da classe, quantidade de perícias por nivel, qual tipo de BBA é a da classe e quais tipos de testes de resistência são da classe) Mago. Implementada no arquivo "Classes.py"
 					</li>
 					<li>
-						<b>Monge</b>: 
+						<b>Monge</b>: classe que implementa as características (dado de vida da classe, lista de perícias da classe, quantidade de perícias por nivel, qual tipo de BBA é a da classe e quais tipos de testes de resistência são da classe) do Monge. Implementada no arquivo "Classes.py"
 					</li>
 					<li>
-						<b>Paladino</b>: 
+						<b>Paladino</b>: classe que implementa as características (dado de vida da classe, lista de perícias da classe, quantidade de perícias por nivel, qual tipo de BBA é a da classe e quais tipos de testes de resistência são da classe) do Paladino. Implementada no arquivo "Classes.py"
 					</li>
 					<li>
-						<b>Ranger</b>: 
+						<b>Ranger</b>: classe que implementa as características (dado de vida da classe, lista de perícias da classe, quantidade de perícias por nivel, qual tipo de BBA é a da classe e quais tipos de testes de resistência são da classe) do Ranger. Implementada no arquivo "Classes.py"
 					</li>
 				</ul>
 			</li>
 			<li>
 				<b>Personagem</b>: 
-			</li>
-			<li>
-				<b>Resist</b>: 
 			</li>
 			<li>
 				<b>Situacao</b>: 
