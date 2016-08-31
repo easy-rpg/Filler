@@ -64,24 +64,51 @@
 <h2>DEV's</h2>
 <ul>
 	<li>
-		<h3>Classes</h3>
+		<h3>Classes Implementadas</h3>
 		<ul>
 			<li>
-				
+				BBA
 			</li>
 			<li>
-				
+				Class
+				<ul>
+					<li>Bárbaro</li>
+					<li>Bardo</li>
+					<li>Clérigo</li>
+					<li>Druida</li>
+					<li>Guerreiro</li>
+					<li>Ladino</li>
+					<li>Mago</li>
+					<li>Monge</li>
+					<li>Paladino</li>
+					<li>Ranger</li>
+				</ul>
 			</li>
 			<li>
-				
+				Personagem
 			</li>
 			<li>
-				
+				Resist
 			</li>
 			<li>
-				
+				Situacao
+			</li>
+			<li>
+				Writer
+			</li>
+			<li>
+				Application
+			</li>
+			<li>
+				MenuBar
 			</li>
 		</ul>
+	</li>
+	<li>
+		<h3>Persistência de dados</h3>
+		<p>
+			A persistência foi feita atrávez de arquivos em formato JSON, localizados dentro da pasta "personagens"
+		</p>
 	</li>
 </ul>
 
