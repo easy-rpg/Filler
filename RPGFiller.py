@@ -144,34 +144,40 @@ class Application(Frame):
         else:
             self.att_classe()
 
-    def RmvClass(self):
-        self.t = Toplevel(self)
-        self.t.wm_title("Remover Classe")
-        self.t.bind("<Return>", self.event_remover_classe)
+    def RmvClass(self):        
+        self.t_r = Toplevel(self)
+        self.t_r.wm_title("Remover Classe")
+        self.t_r.bind("<Return>", self.event_rmv_classe)
 
-        self.label_lista_classe = Label(self.t, text="Classe: ").grid(row=0)
-        self.lista_classes = Listbox(self.t, selectmode=BROWSE)
-        self.lista_classes.grid(row=0, column=1)
+        self.label_lista_classe_r = Label(self.t_r, text="Classe: ").grid(row=0)
+        self.lista_classes_r = Listbox(self.t_r, selectmode=BROWSE)
+        self.lista_classes_r.grid(row=0, column=1)
 
         for classe in personagem.classes:
-            self.lista_classes.insert(END, classe)
+            self.lista_classes_r.insert(END, classe)
 
-        # self.label_cnivel = Label(self.t, text="Nível: ").grid(row=1, column=0)
-        # self.entry_cnivel = Entry(self.t)
-        # self.entry_cnivel.grid(row=1, column=1)
+        self.button_r = Button(self.t_r)
+        self.button_r["text"] = "Remover",
+        self.button_r["command"] = self.rmv_classe
+        self.button_r.grid(row=2, columnspan=2)
 
-        self.button = Button(self.t)
-        self.button["text"] = "Remover",
-        self.button["command"] = self.remover_classe
-        self.button.grid(row=2, columnspan=2)
+    def event_rmv_classe(self, event):
+        self.rmv_classe()
 
-        print 'rmv'
+    def rmv_classe(self):
+        if not self.lista_classes_r.curselection():
+            self.mensagem("Erro", "Selecione a classe")
+            return
+        print personagem
+        del personagem.classes[self.lista_classes_r.get(self.lista_classes_r.curselection()[0])]
+        print personagem
 
-    def event_remover_classe(self, event):
-        self.remover_classe_classe
-
-    def remover_classe(self):
-        print 'remover ' + self.lista_classes.get(self.lista_classes.curselection()[0])
+        self.t_r.withdraw()
+        if personagem.nome:
+            self.att()
+            self.att_classe()
+        else:
+            self.att_classe()
 
     def clr(self):
         self.entry_nome.delete(0, END)
@@ -286,10 +292,10 @@ class Application(Frame):
         self.cadastrar_char["command"] = self.salvar_char
         self.cadastrar_char.grid(row=8, column=0, columnspan=4)
 
-        # self.remover_classe = Button(self)
-        # self.remover_classe["text"] = "Remover Classe"
-        # self.remover_classe["command"] = self.RmvClass
-        # self.remover_classe.grid(row=9, column=0, columnspan=2)
+        self.remover_classe = Button(self)
+        self.remover_classe["text"] = "Remover Classe"
+        self.remover_classe["command"] = self.RmvClass
+        self.remover_classe.grid(row=9, column=0, columnspan=2)
 
         self.cadastrar_classe = Button(self)
         self.cadastrar_classe["text"] = "Configurar Classe"
@@ -315,8 +321,8 @@ class Application(Frame):
 
 root = Tk()
 root.wm_title("RPG Filler")
-root.resizable(width=False, height=False)
-root.geometry('{}x{}'.format(300, 220))
+# root.resizable(width=False, height=False)
+# root.geometry('{}x{}'.format(300, 270))
 
 app = Application(master=root)
 
