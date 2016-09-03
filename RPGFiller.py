@@ -140,6 +140,7 @@ class Application(Frame):
         self.t.withdraw()
         if personagem.nome:
             self.att()
+            self.att_classe()
         else:
             self.att_classe()
 
@@ -304,6 +305,7 @@ while True:
         atualizar = False
     if clear:
         app.clr()
+        app.clr_classe()
         clear = False
     if stop:
         break
