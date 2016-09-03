@@ -102,7 +102,7 @@ class Application(Frame):
 
     def NewClass(self):
         self.t = Toplevel(self)
-        self.t.wm_title("Novo Personagem")
+        self.t.wm_title("Configurar Classe")
         self.t.bind("<Return>", self.event_salvar_classe)
 
         self.label_lista_classe = Label(self.t, text="Classe: ").grid(row=0)
@@ -144,6 +144,35 @@ class Application(Frame):
         else:
             self.att_classe()
 
+    def RmvClass(self):
+        self.t = Toplevel(self)
+        self.t.wm_title("Remover Classe")
+        self.t.bind("<Return>", self.event_remover_classe)
+
+        self.label_lista_classe = Label(self.t, text="Classe: ").grid(row=0)
+        self.lista_classes = Listbox(self.t, selectmode=BROWSE)
+        self.lista_classes.grid(row=0, column=1)
+
+        for classe in personagem.classes:
+            self.lista_classes.insert(END, classe)
+
+        # self.label_cnivel = Label(self.t, text="Nível: ").grid(row=1, column=0)
+        # self.entry_cnivel = Entry(self.t)
+        # self.entry_cnivel.grid(row=1, column=1)
+
+        self.button = Button(self.t)
+        self.button["text"] = "Remover",
+        self.button["command"] = self.remover_classe
+        self.button.grid(row=2, columnspan=2)
+
+        print 'rmv'
+
+    def event_remover_classe(self, event):
+        self.remover_classe_classe
+
+    def remover_classe(self):
+        print 'remover ' + self.lista_classes.get(self.lista_classes.curselection()[0])
+
     def clr(self):
         self.entry_nome.delete(0, END)
         self.entry_for.delete(0, END)
@@ -152,19 +181,8 @@ class Application(Frame):
         self.entry_int.delete(0, END)
         self.entry_sab.delete(0, END)
         self.entry_car.delete(0, END)
-        # self.entry_lvl.delete(0, END)
-        # self.entry_life.delete(0, END)
         
-    def clr_classe(self):
-        # self.entry_classes.delete(0, END)
-        # self.entry_bba.delete(0, END)
-        # self.entry_fort.delete(0, END)
-        # self.entry_ref.delete(0, END)
-        # self.entry_von.delete(0, END)
-        print 'oi'
-
     def att_classe(self):
-        self.clr_classe()
         global personagem
 
         string = ""
@@ -175,17 +193,12 @@ class Application(Frame):
             if len(personagem.classes) != counter:
                 string += "\n"
         self.string_classes.set(string)
-        # self.entry_classes.insert(0, string)
 
         self.string_bba.set(str(personagem.bba))
-        # self.entry_bba.insert(0, str(personagem.bba))
 
         self.string_fort.set(str(personagem.fortitude))
         self.string_ref.set(str(personagem.reflexos))
         self.string_von.set(str(personagem.vontade))
-        # self.entry_fort.insert(0, str(personagem.fortitude))
-        # self.entry_ref.insert(0, str(personagem.reflexos))
-        # self.entry_von.insert(0, str(personagem.vontade))
 
     def att(self): 
         self.clr()
@@ -203,9 +216,6 @@ class Application(Frame):
 
         self.string_life.set(str(personagem.life))
         self.string_lvl.set(str(personagem.nivel))
-
-        # self.entry_lvl.insert(0, str(personagem.nivel))
-        # self.entry_life.insert(0, str(personagem.life))
 
     def createWidgets(self):
         self.label_nome = Label(self, text="Nome: ").grid(row=0, column=0)
@@ -271,15 +281,20 @@ class Application(Frame):
         self.entry_von = Label(self, textvariable=self.string_von, width=5)
         self.entry_von.grid(row=7, column=3)
 
-        self.cadastrar_classe = Button(self)
-        self.cadastrar_classe["text"] = "Configurar Classe"
-        self.cadastrar_classe["command"] = self.NewClass
-        self.cadastrar_classe.grid(row=8, column=0, columnspan=2)
-
         self.cadastrar_char = Button(self)
         self.cadastrar_char["text"] = "Salvar"
         self.cadastrar_char["command"] = self.salvar_char
-        self.cadastrar_char.grid(row=8, column=2, columnspan=2)
+        self.cadastrar_char.grid(row=8, column=0, columnspan=4)
+
+        # self.remover_classe = Button(self)
+        # self.remover_classe["text"] = "Remover Classe"
+        # self.remover_classe["command"] = self.RmvClass
+        # self.remover_classe.grid(row=9, column=0, columnspan=2)
+
+        self.cadastrar_classe = Button(self)
+        self.cadastrar_classe["text"] = "Configurar Classe"
+        self.cadastrar_classe["command"] = self.NewClass
+        self.cadastrar_classe.grid(row=9, column=2, columnspan=2)
 
     def mensagem(self, title, string):
         tkMessageBox.showinfo(title, string)
@@ -311,7 +326,6 @@ while True:
         atualizar = False
     if clear:
         app.clr()
-        app.clr_classe()
         clear = False
     if stop:
         break
