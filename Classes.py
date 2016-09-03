@@ -5,7 +5,7 @@ from Resist import Resist_Boa, Resist_Ruim
 from BBA import BBA_Boa, BBA_Ruim
 
 class Class(object):
-	"""docstring for Barbaro"""
+	"""docstring for Class"""
 	__metaclass__ = abc.ABCMeta
 
 	@abc.abstractmethod

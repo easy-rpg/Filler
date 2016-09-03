@@ -103,8 +103,7 @@ class Personagem(object):
 # assis = Personagem('Assis', 17, 14, 20, 12, 14, 10)
 # assis.set_class(Barbaro(3))
 # assis.set_class(Guerreiro(4))
-# # # print assis
-# # # assis.save()
+# print assis
 
 # personagem = load_personagem("personagens/Assis.rf")
 # print personagem
