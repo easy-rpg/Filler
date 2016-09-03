@@ -152,30 +152,40 @@ class Application(Frame):
         self.entry_int.delete(0, END)
         self.entry_sab.delete(0, END)
         self.entry_car.delete(0, END)
-        self.entry_lvl.delete(0, END)
-        self.entry_life.delete(0, END)
+        # self.entry_lvl.delete(0, END)
+        # self.entry_life.delete(0, END)
         
     def clr_classe(self):
-        self.entry_classes.delete(0, END)
-        self.entry_bba.delete(0, END)
-        self.entry_fort.delete(0, END)
-        self.entry_ref.delete(0, END)
-        self.entry_von.delete(0, END)
+        # self.entry_classes.delete(0, END)
+        # self.entry_bba.delete(0, END)
+        # self.entry_fort.delete(0, END)
+        # self.entry_ref.delete(0, END)
+        # self.entry_von.delete(0, END)
+        print 'oi'
 
     def att_classe(self):
         self.clr_classe()
         global personagem
 
         string = ""
+        counter = 0
         for index in personagem.classes:
+            counter += 1
             string += index + " ("+str(personagem.classes[index].nivel)+") "
-        self.entry_classes.insert(0, string)
+            if len(personagem.classes) != counter:
+                string += "\n"
+        self.string_classes.set(string)
+        # self.entry_classes.insert(0, string)
 
-        self.entry_bba.insert(0, str(personagem.bba))
+        self.string_bba.set(str(personagem.bba))
+        # self.entry_bba.insert(0, str(personagem.bba))
 
-        self.entry_fort.insert(0, str(personagem.fortitude))
-        self.entry_ref.insert(0, str(personagem.reflexos))
-        self.entry_von.insert(0, str(personagem.vontade))
+        self.string_fort.set(str(personagem.fortitude))
+        self.string_ref.set(str(personagem.reflexos))
+        self.string_von.set(str(personagem.vontade))
+        # self.entry_fort.insert(0, str(personagem.fortitude))
+        # self.entry_ref.insert(0, str(personagem.reflexos))
+        # self.entry_von.insert(0, str(personagem.vontade))
 
     def att(self): 
         self.clr()
@@ -191,78 +201,74 @@ class Application(Frame):
         self.entry_sab.insert(0, str(personagem.atributos['sab'])) 
         self.entry_car.insert(0, str(personagem.atributos['car'])) 
 
-        self.entry_lvl.insert(0, str(personagem.nivel))
-        self.entry_life.insert(0, str(personagem.life))
+        self.string_life.set(str(personagem.life))
+        self.string_lvl.set(str(personagem.nivel))
+
+        # self.entry_lvl.insert(0, str(personagem.nivel))
+        # self.entry_life.insert(0, str(personagem.life))
 
     def createWidgets(self):
         self.label_nome = Label(self, text="Nome: ").grid(row=0, column=0)
-        self.string_nome = StringVar()
-        self.entry_nome = Entry(self, textvariable=self.string_nome, width=17)
+        self.entry_nome = Entry(self, width=17)
         self.entry_nome.grid(row=0, column=1 ,columnspan=3)
 
         self.label_for = Label(self, text="For: ").grid(row=1, column=0)
-        self.string_for = StringVar()
-        self.entry_for = Entry(self, textvariable=self.string_for, width=5)
+        self.entry_for = Entry(self, width=5)
         self.entry_for.grid(row=1, column=1)
 
         self.label_dex = Label(self, text="Dex: ").grid(row=2, column=0)
-        self.string_dex = StringVar()
-        self.entry_dex = Entry(self, textvariable=self.string_dex, width=5)
+        self.entry_dex = Entry(self, width=5)
         self.entry_dex.grid(row=2, column=1)
 
         self.label_con = Label(self, text="Con: ").grid(row=3, column=0)
-        self.string_con = StringVar()
-        self.entry_con = Entry(self, textvariable=self.string_con, width=5)
+        self.entry_con = Entry(self, width=5)
         self.entry_con.grid(row=3, column=1)
 
         self.label_int = Label(self, text="Int: ").grid(row=1, column=2)
-        self.string_int = StringVar()
-        self.entry_int = Entry(self, textvariable=self.string_int, width=5)
+        self.entry_int = Entry(self, width=5)
         self.entry_int.grid(row=1, column=3)
 
         self.label_sab = Label(self, text="Sab: ").grid(row=2, column=2)
-        self.string_sab = StringVar()
-        self.entry_sab = Entry(self, textvariable=self.string_sab, width=5)
+        self.entry_sab = Entry(self, width=5)
         self.entry_sab.grid(row=2, column=3)
 
         self.label_car = Label(self, text="Car: ").grid(row=3, column=2)
-        self.string_car = StringVar()
-        self.entry_car = Entry(self, textvariable=self.string_car, width=5)
+        self.entry_car = Entry(self, width=5)
         self.entry_car.grid(row=3, column=3)
 
         self.label_lvl = Label(self, text="Nivel: ").grid(row=4, column=0)
         self.string_lvl = StringVar()
-        self.entry_lvl = Entry(self, textvariable=self.string_lvl, width=5)
+        self.entry_lvl = Label(self, textvariable=self.string_lvl, width=5)
         self.entry_lvl.grid(row=4, column=1)
 
         self.label_life = Label(self, text="Life: ").grid(row=4, column=2)
         self.string_life = StringVar()
-        self.entry_life = Entry(self, textvariable=self.string_life, width=5)
+        self.entry_life = Label(self, textvariable=self.string_life, width=5)
         self.entry_life.grid(row=4, column=3)
 
         self.label_classes = Label(self, text="Classes: ").grid(row=5, column=0)
         self.string_classes = StringVar()
-        self.entry_classes = Entry(self, textvariable=self.string_classes, width=17)
+        self.entry_classes = Label(self, textvariable=self.string_classes, width=17)
         self.entry_classes.grid(row=5, column=1, columnspan=3)
 
         self.label_bba = Label(self, text="BBA: ").grid(row=6, column=0)
         self.string_bba = StringVar()
-        self.entry_bba = Entry(self, textvariable=self.string_bba, width=5)
+        self.entry_bba = Label(self, textvariable=self.string_bba, width=5)
         self.entry_bba.grid(row=6, column=1)
 
         self.label_fort = Label(self, text="FORT: ").grid(row=6, column=2)
         self.string_fort = StringVar()
-        self.entry_fort = Entry(self, textvariable=self.string_fort, width=5)
+        self.entry_fort = Label(self, textvariable=self.string_fort, width=5)
         self.entry_fort.grid(row=6, column=3)
 
         self.label_ref = Label(self, text="REF: ").grid(row=7, column=0)
         self.string_ref = StringVar()
-        self.entry_ref = Entry(self, textvariable=self.string_ref, width=5)
+        self.entry_ref = Label(self, textvariable=self.string_ref, width=5)
         self.entry_ref.grid(row=7, column=1)
 
         self.label_von = Label(self, text="VON: ").grid(row=7, column=2)
         self.string_von = StringVar()
-        self.entry_von = Entry(self, textvariable=self.string_von, width=5)
+        self.entry_von = Label(self, textvariable=self.string_von, width=5)
         self.entry_von.grid(row=7, column=3)
 
         self.cadastrar_classe = Button(self)
